@@ -18,9 +18,11 @@ def main():
     newly_seen = set(seen)
     new_matches = []
 
-    for company in COMPANIES:
-        try:
-            jobs = fetch(company)
+for company in COMPANIES:
+    logging.info("Starting %s...", company["name"])
+
+    try:
+        jobs = fetch(company)
             logging.info("%s: collected %d jobs", company["name"], len(jobs))
         except Exception as exc:
             logging.exception(
