@@ -52,7 +52,13 @@ def smartrecruiters(company):
         data = get_json(url, params={"limit": limit, "offset": offset})
         content = data.get("content", [])
 
-        for j in content:
+for index, j in enumerate(content, start=1):
+                logging.info(
+                "%s: fetching job %d/%d",
+                company["name"],
+                index,
+                len(content),
+            )
             loc = j.get("location") or {}
             location = ", ".join(
                 x for x in [
